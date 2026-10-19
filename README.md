@@ -1,15 +1,10 @@
-# Zero-Knowledge Smart Contracts for Service-Level Agreements in Microservice Healthcare Edge-Cloud AIoT Deployment Applications. 
-
-The project is carried out by Huyen-Trang Le and Huu-Hung Vuong under the supervision of Dr. Adnan Imeri and Prof. Nazim Agoulmine (COSMO Team, ISIBC Laboratory).
+# Web Interface for Microservice Healthcare Edge-Cloud AIoT Deployment Applications. 
 
 ## Overview
 
 Healthcare IoT services rely on SLAs that guarantee QoS properties such as latency and availability. These SLAs are usually enforced by centralised providers, which offers little transparency. The arrangement also exposes sensitive deployment data, such as device identifiers, patient links and sensor locations. The project proposes an alternative in which providers prove SLA compliance with **zk-SNARKs (Groth16)**. The proofs are verified natively on the **Sui** blockchain, and smart contracts apply penalties or incentives automatically. Throughout the process, the underlying data stays private.
 
-The console makes this protocol observable. It covers the two scenarios of the proposal:
-
-- **Scenario 1: compliance verification.** The provider proves, for example, that ECG latency is at most 2 s without revealing the deployment.
-- **Scenario 2: resource negotiation.** The consumer checks that a provider meets its constraints without seeing the provider's infrastructure.
+The project is carried out by Huyen-Trang Le and Huu-Hung Vuong under the supervision of Dr. Adnan Imeri and Prof. Nazim Agoulmine (COSMO Team, ISIBC Laboratory).
 
 ## Modules
 
