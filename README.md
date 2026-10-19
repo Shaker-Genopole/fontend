@@ -16,7 +16,6 @@ The project is carried out by Huyen-Trang Le and Huu-Hung Vuong under the superv
 | `/proof-lab`                  | Interactive proof pipeline (Scenario 1)          |
 | `/negotiation`                | Constraint-based provider selection (Scenario 2) |
 | `/devices`, `/infrastructure` | IoT devices and edge–cloud resources             |
-| `/research`                   | Research context                                 |
 
 The template's original modules (tasks, users, apps, chats, Clerk authentication and settings) are retained.
 
