@@ -19,44 +19,97 @@ import {
   MessagesSquare,
   ShieldCheck,
   AudioWaveform,
-  Command,
   GalleryVerticalEnd,
+  FileCheck2,
+  ShieldHalf,
+  FlaskConical,
+  Handshake,
+  HeartPulse,
+  Network,
+  BookOpen,
 } from 'lucide-react'
 import { ClerkLogo } from '@/assets/clerk-logo'
 import { type SidebarData } from '../types'
 
 export const sidebarData: SidebarData = {
   user: {
-    name: 'satnaing',
-    email: 'satnaingdev@gmail.com',
+    name: 'Demo Operator',
+    email: 'operator@zk-sla.demo',
     avatar: '/avatars/shadcn.jpg',
   },
   teams: [
     {
-      name: 'Shadcn Admin',
-      logo: Command,
-      plan: 'Vite + ShadcnUI',
+      name: 'ZK-SLA Console',
+      logo: ShieldHalf,
+      plan: 'Sui Testnet · Groth16',
     },
     {
-      name: 'Acme Inc',
+      name: 'Hospital Pilot',
       logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
+      plan: 'Edge-cloud deployment',
     },
     {
-      name: 'Acme Corp.',
+      name: 'Research Sandbox',
       logo: AudioWaveform,
-      plan: 'Startup',
+      plan: 'Sui Devnet',
     },
   ],
   navGroups: [
     {
-      title: 'General',
+      title: 'SLA Verification',
       items: [
         {
-          title: 'Dashboard',
+          title: 'Overview',
           url: '/',
           icon: LayoutDashboard,
         },
+        {
+          title: 'SLA Contracts',
+          url: '/sla-contracts',
+          icon: FileCheck2,
+        },
+        {
+          title: 'ZK Proof Ledger',
+          url: '/zk-proofs',
+          icon: ShieldHalf,
+        },
+        {
+          title: 'Proof Lab',
+          url: '/proof-lab',
+          badge: 'S1',
+          icon: FlaskConical,
+        },
+        {
+          title: 'Resource Negotiation',
+          url: '/negotiation',
+          badge: 'S2',
+          icon: Handshake,
+        },
+      ],
+    },
+    {
+      title: 'Edge-Cloud AIoT',
+      items: [
+        {
+          title: 'IoT Devices',
+          url: '/devices',
+          icon: HeartPulse,
+        },
+        {
+          title: 'Infrastructure',
+          url: '/infrastructure',
+          icon: Network,
+        },
+        {
+          title: 'Research Context',
+          url: '/research',
+          icon: BookOpen,
+        },
+      ],
+    },
+    {
+      title: 'General',
+      items: [
         {
           title: 'Tasks',
           url: '/tasks',

@@ -25,10 +25,17 @@ import { Route as authForgotPasswordRouteImport } from './routes/(auth)/forgot-p
 import { Route as ClerkAuthenticatedRouteRouteImport } from './routes/clerk/_authenticated/route'
 import { Route as ClerkauthRouteRouteImport } from './routes/clerk/(auth)/route'
 import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
+import { Route as AuthenticatedZkProofsIndexRouteImport } from './routes/_authenticated/zk-proofs/index'
 import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index'
 import { Route as AuthenticatedTasksIndexRouteImport } from './routes/_authenticated/tasks/index'
+import { Route as AuthenticatedSlaContractsIndexRouteImport } from './routes/_authenticated/sla-contracts/index'
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
+import { Route as AuthenticatedResearchIndexRouteImport } from './routes/_authenticated/research/index'
+import { Route as AuthenticatedProofLabIndexRouteImport } from './routes/_authenticated/proof-lab/index'
+import { Route as AuthenticatedNegotiationIndexRouteImport } from './routes/_authenticated/negotiation/index'
+import { Route as AuthenticatedInfrastructureIndexRouteImport } from './routes/_authenticated/infrastructure/index'
 import { Route as AuthenticatedHelpCenterIndexRouteImport } from './routes/_authenticated/help-center/index'
+import { Route as AuthenticatedDevicesIndexRouteImport } from './routes/_authenticated/devices/index'
 import { Route as AuthenticatedChatsIndexRouteImport } from './routes/_authenticated/chats/index'
 import { Route as AuthenticatedAppsIndexRouteImport } from './routes/_authenticated/apps/index'
 import { Route as ClerkAuthenticatedUserManagementRouteImport } from './routes/clerk/_authenticated/user-management'
@@ -118,6 +125,12 @@ const AuthenticatedSettingsRouteRoute =
     path: '/settings',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedZkProofsIndexRoute =
+  AuthenticatedZkProofsIndexRouteImport.update({
+    id: '/zk-proofs/',
+    path: '/zk-proofs/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
   id: '/users/',
   path: '/users/',
@@ -128,16 +141,52 @@ const AuthenticatedTasksIndexRoute = AuthenticatedTasksIndexRouteImport.update({
   path: '/tasks/',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedSlaContractsIndexRoute =
+  AuthenticatedSlaContractsIndexRouteImport.update({
+    id: '/sla-contracts/',
+    path: '/sla-contracts/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedSettingsIndexRoute =
   AuthenticatedSettingsIndexRouteImport.update({
     id: '/',
     path: '/',
     getParentRoute: () => AuthenticatedSettingsRouteRoute,
   } as any)
+const AuthenticatedResearchIndexRoute =
+  AuthenticatedResearchIndexRouteImport.update({
+    id: '/research/',
+    path: '/research/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProofLabIndexRoute =
+  AuthenticatedProofLabIndexRouteImport.update({
+    id: '/proof-lab/',
+    path: '/proof-lab/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedNegotiationIndexRoute =
+  AuthenticatedNegotiationIndexRouteImport.update({
+    id: '/negotiation/',
+    path: '/negotiation/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedInfrastructureIndexRoute =
+  AuthenticatedInfrastructureIndexRouteImport.update({
+    id: '/infrastructure/',
+    path: '/infrastructure/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedHelpCenterIndexRoute =
   AuthenticatedHelpCenterIndexRouteImport.update({
     id: '/help-center/',
     path: '/help-center/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDevicesIndexRoute =
+  AuthenticatedDevicesIndexRouteImport.update({
+    id: '/devices/',
+    path: '/devices/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedChatsIndexRoute = AuthenticatedChatsIndexRouteImport.update({
@@ -221,10 +270,17 @@ export interface FileRoutesByFullPath {
   '/clerk/user-management': typeof ClerkAuthenticatedUserManagementRoute
   '/apps/': typeof AuthenticatedAppsIndexRoute
   '/chats/': typeof AuthenticatedChatsIndexRoute
+  '/devices/': typeof AuthenticatedDevicesIndexRoute
   '/help-center/': typeof AuthenticatedHelpCenterIndexRoute
+  '/infrastructure/': typeof AuthenticatedInfrastructureIndexRoute
+  '/negotiation/': typeof AuthenticatedNegotiationIndexRoute
+  '/proof-lab/': typeof AuthenticatedProofLabIndexRoute
+  '/research/': typeof AuthenticatedResearchIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
+  '/sla-contracts/': typeof AuthenticatedSlaContractsIndexRoute
   '/tasks/': typeof AuthenticatedTasksIndexRoute
   '/users/': typeof AuthenticatedUsersIndexRoute
+  '/zk-proofs/': typeof AuthenticatedZkProofsIndexRoute
 }
 export interface FileRoutesByTo {
   '/clerk': typeof ClerkAuthenticatedRouteRouteWithChildren
@@ -249,10 +305,17 @@ export interface FileRoutesByTo {
   '/clerk/user-management': typeof ClerkAuthenticatedUserManagementRoute
   '/apps': typeof AuthenticatedAppsIndexRoute
   '/chats': typeof AuthenticatedChatsIndexRoute
+  '/devices': typeof AuthenticatedDevicesIndexRoute
   '/help-center': typeof AuthenticatedHelpCenterIndexRoute
+  '/infrastructure': typeof AuthenticatedInfrastructureIndexRoute
+  '/negotiation': typeof AuthenticatedNegotiationIndexRoute
+  '/proof-lab': typeof AuthenticatedProofLabIndexRoute
+  '/research': typeof AuthenticatedResearchIndexRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
+  '/sla-contracts': typeof AuthenticatedSlaContractsIndexRoute
   '/tasks': typeof AuthenticatedTasksIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/zk-proofs': typeof AuthenticatedZkProofsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -282,10 +345,17 @@ export interface FileRoutesById {
   '/clerk/_authenticated/user-management': typeof ClerkAuthenticatedUserManagementRoute
   '/_authenticated/apps/': typeof AuthenticatedAppsIndexRoute
   '/_authenticated/chats/': typeof AuthenticatedChatsIndexRoute
+  '/_authenticated/devices/': typeof AuthenticatedDevicesIndexRoute
   '/_authenticated/help-center/': typeof AuthenticatedHelpCenterIndexRoute
+  '/_authenticated/infrastructure/': typeof AuthenticatedInfrastructureIndexRoute
+  '/_authenticated/negotiation/': typeof AuthenticatedNegotiationIndexRoute
+  '/_authenticated/proof-lab/': typeof AuthenticatedProofLabIndexRoute
+  '/_authenticated/research/': typeof AuthenticatedResearchIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
+  '/_authenticated/sla-contracts/': typeof AuthenticatedSlaContractsIndexRoute
   '/_authenticated/tasks/': typeof AuthenticatedTasksIndexRoute
   '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_authenticated/zk-proofs/': typeof AuthenticatedZkProofsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -313,10 +383,17 @@ export interface FileRouteTypes {
     | '/clerk/user-management'
     | '/apps/'
     | '/chats/'
+    | '/devices/'
     | '/help-center/'
+    | '/infrastructure/'
+    | '/negotiation/'
+    | '/proof-lab/'
+    | '/research/'
     | '/settings/'
+    | '/sla-contracts/'
     | '/tasks/'
     | '/users/'
+    | '/zk-proofs/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/clerk'
@@ -341,10 +418,17 @@ export interface FileRouteTypes {
     | '/clerk/user-management'
     | '/apps'
     | '/chats'
+    | '/devices'
     | '/help-center'
+    | '/infrastructure'
+    | '/negotiation'
+    | '/proof-lab'
+    | '/research'
     | '/settings'
+    | '/sla-contracts'
     | '/tasks'
     | '/users'
+    | '/zk-proofs'
   id:
     | '__root__'
     | '/_authenticated'
@@ -373,10 +457,17 @@ export interface FileRouteTypes {
     | '/clerk/_authenticated/user-management'
     | '/_authenticated/apps/'
     | '/_authenticated/chats/'
+    | '/_authenticated/devices/'
     | '/_authenticated/help-center/'
+    | '/_authenticated/infrastructure/'
+    | '/_authenticated/negotiation/'
+    | '/_authenticated/proof-lab/'
+    | '/_authenticated/research/'
     | '/_authenticated/settings/'
+    | '/_authenticated/sla-contracts/'
     | '/_authenticated/tasks/'
     | '/_authenticated/users/'
+    | '/_authenticated/zk-proofs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -508,6 +599,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/zk-proofs/': {
+      id: '/_authenticated/zk-proofs/'
+      path: '/zk-proofs'
+      fullPath: '/zk-proofs/'
+      preLoaderRoute: typeof AuthenticatedZkProofsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/users/': {
       id: '/_authenticated/users/'
       path: '/users'
@@ -522,6 +620,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTasksIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/sla-contracts/': {
+      id: '/_authenticated/sla-contracts/'
+      path: '/sla-contracts'
+      fullPath: '/sla-contracts/'
+      preLoaderRoute: typeof AuthenticatedSlaContractsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/settings/': {
       id: '/_authenticated/settings/'
       path: '/'
@@ -529,11 +634,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport
       parentRoute: typeof AuthenticatedSettingsRouteRoute
     }
+    '/_authenticated/research/': {
+      id: '/_authenticated/research/'
+      path: '/research'
+      fullPath: '/research/'
+      preLoaderRoute: typeof AuthenticatedResearchIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/proof-lab/': {
+      id: '/_authenticated/proof-lab/'
+      path: '/proof-lab'
+      fullPath: '/proof-lab/'
+      preLoaderRoute: typeof AuthenticatedProofLabIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/negotiation/': {
+      id: '/_authenticated/negotiation/'
+      path: '/negotiation'
+      fullPath: '/negotiation/'
+      preLoaderRoute: typeof AuthenticatedNegotiationIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/infrastructure/': {
+      id: '/_authenticated/infrastructure/'
+      path: '/infrastructure'
+      fullPath: '/infrastructure/'
+      preLoaderRoute: typeof AuthenticatedInfrastructureIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/help-center/': {
       id: '/_authenticated/help-center/'
       path: '/help-center'
       fullPath: '/help-center/'
       preLoaderRoute: typeof AuthenticatedHelpCenterIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/devices/': {
+      id: '/_authenticated/devices/'
+      path: '/devices'
+      fullPath: '/devices/'
+      preLoaderRoute: typeof AuthenticatedDevicesIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/chats/': {
@@ -638,9 +778,16 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
   AuthenticatedAppsIndexRoute: typeof AuthenticatedAppsIndexRoute
   AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
+  AuthenticatedDevicesIndexRoute: typeof AuthenticatedDevicesIndexRoute
   AuthenticatedHelpCenterIndexRoute: typeof AuthenticatedHelpCenterIndexRoute
+  AuthenticatedInfrastructureIndexRoute: typeof AuthenticatedInfrastructureIndexRoute
+  AuthenticatedNegotiationIndexRoute: typeof AuthenticatedNegotiationIndexRoute
+  AuthenticatedProofLabIndexRoute: typeof AuthenticatedProofLabIndexRoute
+  AuthenticatedResearchIndexRoute: typeof AuthenticatedResearchIndexRoute
+  AuthenticatedSlaContractsIndexRoute: typeof AuthenticatedSlaContractsIndexRoute
   AuthenticatedTasksIndexRoute: typeof AuthenticatedTasksIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
+  AuthenticatedZkProofsIndexRoute: typeof AuthenticatedZkProofsIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -649,9 +796,16 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
   AuthenticatedAppsIndexRoute: AuthenticatedAppsIndexRoute,
   AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
+  AuthenticatedDevicesIndexRoute: AuthenticatedDevicesIndexRoute,
   AuthenticatedHelpCenterIndexRoute: AuthenticatedHelpCenterIndexRoute,
+  AuthenticatedInfrastructureIndexRoute: AuthenticatedInfrastructureIndexRoute,
+  AuthenticatedNegotiationIndexRoute: AuthenticatedNegotiationIndexRoute,
+  AuthenticatedProofLabIndexRoute: AuthenticatedProofLabIndexRoute,
+  AuthenticatedResearchIndexRoute: AuthenticatedResearchIndexRoute,
+  AuthenticatedSlaContractsIndexRoute: AuthenticatedSlaContractsIndexRoute,
   AuthenticatedTasksIndexRoute: AuthenticatedTasksIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+  AuthenticatedZkProofsIndexRoute: AuthenticatedZkProofsIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
