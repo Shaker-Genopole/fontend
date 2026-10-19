@@ -1,4 +1,4 @@
-# Web Interface for Microservice Healthcare Edge-Cloud AIoT Deployment Applications. 
+# Web Interface for Microservice Healthcare Edge-Cloud AIoT Deployment Applications.
 
 ## Overview
 
