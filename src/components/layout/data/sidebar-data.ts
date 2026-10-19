@@ -26,7 +26,6 @@ import {
   Handshake,
   HeartPulse,
   Network,
-  BookOpen,
 } from 'lucide-react'
 import { ClerkLogo } from '@/assets/clerk-logo'
 import { type SidebarData } from '../types'
@@ -99,11 +98,6 @@ export const sidebarData: SidebarData = {
           title: 'Infrastructure',
           url: '/infrastructure',
           icon: Network,
-        },
-        {
-          title: 'Research Context',
-          url: '/research',
-          icon: BookOpen,
         },
       ],
     },

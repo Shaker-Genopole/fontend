@@ -30,7 +30,6 @@ import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authentic
 import { Route as AuthenticatedTasksIndexRouteImport } from './routes/_authenticated/tasks/index'
 import { Route as AuthenticatedSlaContractsIndexRouteImport } from './routes/_authenticated/sla-contracts/index'
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
-import { Route as AuthenticatedResearchIndexRouteImport } from './routes/_authenticated/research/index'
 import { Route as AuthenticatedProofLabIndexRouteImport } from './routes/_authenticated/proof-lab/index'
 import { Route as AuthenticatedNegotiationIndexRouteImport } from './routes/_authenticated/negotiation/index'
 import { Route as AuthenticatedInfrastructureIndexRouteImport } from './routes/_authenticated/infrastructure/index'
@@ -153,12 +152,6 @@ const AuthenticatedSettingsIndexRoute =
     path: '/',
     getParentRoute: () => AuthenticatedSettingsRouteRoute,
   } as any)
-const AuthenticatedResearchIndexRoute =
-  AuthenticatedResearchIndexRouteImport.update({
-    id: '/research/',
-    path: '/research/',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
 const AuthenticatedProofLabIndexRoute =
   AuthenticatedProofLabIndexRouteImport.update({
     id: '/proof-lab/',
@@ -275,7 +268,6 @@ export interface FileRoutesByFullPath {
   '/infrastructure/': typeof AuthenticatedInfrastructureIndexRoute
   '/negotiation/': typeof AuthenticatedNegotiationIndexRoute
   '/proof-lab/': typeof AuthenticatedProofLabIndexRoute
-  '/research/': typeof AuthenticatedResearchIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
   '/sla-contracts/': typeof AuthenticatedSlaContractsIndexRoute
   '/tasks/': typeof AuthenticatedTasksIndexRoute
@@ -310,7 +302,6 @@ export interface FileRoutesByTo {
   '/infrastructure': typeof AuthenticatedInfrastructureIndexRoute
   '/negotiation': typeof AuthenticatedNegotiationIndexRoute
   '/proof-lab': typeof AuthenticatedProofLabIndexRoute
-  '/research': typeof AuthenticatedResearchIndexRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
   '/sla-contracts': typeof AuthenticatedSlaContractsIndexRoute
   '/tasks': typeof AuthenticatedTasksIndexRoute
@@ -350,7 +341,6 @@ export interface FileRoutesById {
   '/_authenticated/infrastructure/': typeof AuthenticatedInfrastructureIndexRoute
   '/_authenticated/negotiation/': typeof AuthenticatedNegotiationIndexRoute
   '/_authenticated/proof-lab/': typeof AuthenticatedProofLabIndexRoute
-  '/_authenticated/research/': typeof AuthenticatedResearchIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
   '/_authenticated/sla-contracts/': typeof AuthenticatedSlaContractsIndexRoute
   '/_authenticated/tasks/': typeof AuthenticatedTasksIndexRoute
@@ -388,7 +378,6 @@ export interface FileRouteTypes {
     | '/infrastructure/'
     | '/negotiation/'
     | '/proof-lab/'
-    | '/research/'
     | '/settings/'
     | '/sla-contracts/'
     | '/tasks/'
@@ -423,7 +412,6 @@ export interface FileRouteTypes {
     | '/infrastructure'
     | '/negotiation'
     | '/proof-lab'
-    | '/research'
     | '/settings'
     | '/sla-contracts'
     | '/tasks'
@@ -462,7 +450,6 @@ export interface FileRouteTypes {
     | '/_authenticated/infrastructure/'
     | '/_authenticated/negotiation/'
     | '/_authenticated/proof-lab/'
-    | '/_authenticated/research/'
     | '/_authenticated/settings/'
     | '/_authenticated/sla-contracts/'
     | '/_authenticated/tasks/'
@@ -634,13 +621,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport
       parentRoute: typeof AuthenticatedSettingsRouteRoute
     }
-    '/_authenticated/research/': {
-      id: '/_authenticated/research/'
-      path: '/research'
-      fullPath: '/research/'
-      preLoaderRoute: typeof AuthenticatedResearchIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/_authenticated/proof-lab/': {
       id: '/_authenticated/proof-lab/'
       path: '/proof-lab'
@@ -783,7 +763,6 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedInfrastructureIndexRoute: typeof AuthenticatedInfrastructureIndexRoute
   AuthenticatedNegotiationIndexRoute: typeof AuthenticatedNegotiationIndexRoute
   AuthenticatedProofLabIndexRoute: typeof AuthenticatedProofLabIndexRoute
-  AuthenticatedResearchIndexRoute: typeof AuthenticatedResearchIndexRoute
   AuthenticatedSlaContractsIndexRoute: typeof AuthenticatedSlaContractsIndexRoute
   AuthenticatedTasksIndexRoute: typeof AuthenticatedTasksIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
@@ -801,7 +780,6 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedInfrastructureIndexRoute: AuthenticatedInfrastructureIndexRoute,
   AuthenticatedNegotiationIndexRoute: AuthenticatedNegotiationIndexRoute,
   AuthenticatedProofLabIndexRoute: AuthenticatedProofLabIndexRoute,
-  AuthenticatedResearchIndexRoute: AuthenticatedResearchIndexRoute,
   AuthenticatedSlaContractsIndexRoute: AuthenticatedSlaContractsIndexRoute,
   AuthenticatedTasksIndexRoute: AuthenticatedTasksIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
