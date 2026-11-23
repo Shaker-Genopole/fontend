@@ -62,8 +62,8 @@ describe('SignUpForm', () => {
 
   it('shows a mismatch error when passwords do not match', async () => {
     await userEvent.fill(emailInput, 'a@b.com')
-    await userEvent.fill(passwordInput, '1234567')
-    await userEvent.fill(confirmPasswordInput, '7654321')
+    await userEvent.fill(passwordInput, '12345678')
+    await userEvent.fill(confirmPasswordInput, '87654321')
 
     await userEvent.click(submitButton)
     await expect
@@ -74,9 +74,10 @@ describe('SignUpForm', () => {
   it('disables submit while submitting and re-enables after timeout', async () => {
     vi.useFakeTimers()
 
+    await userEvent.fill(screen.getByLabelText(/^Organisation$/i), 'Demo Hospital')
     await userEvent.fill(emailInput, 'a@b.com')
-    await userEvent.fill(passwordInput, '1234567')
-    await userEvent.fill(confirmPasswordInput, '1234567')
+    await userEvent.fill(passwordInput, '12345678')
+    await userEvent.fill(confirmPasswordInput, '12345678')
 
     await userEvent.click(submitButton)
     await expect.element(submitButton).toBeDisabled()

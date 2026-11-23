@@ -30,9 +30,14 @@ export default defineConfig({
   test: {
     silent: 'passed-only',
     unstubEnvs: true,
+    // Unit tests always run against the synthetic data, whatever .env.local says.
+    env: { VITE_LIVE_API: 'false' },
     browser: {
       enabled: true,
-      provider: playwright(),
+      // BROWSER_CHANNEL=msedge (or chrome) runs the suite in an installed browser.
+      provider: playwright({
+        launchOptions: { channel: process.env.BROWSER_CHANNEL },
+      }),
       instances: [{ browser: 'chromium' }],
     },
     coverage: {

@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from '@tanstack/react-router'
-import { useDAppKit } from '@mysten/dapp-kit-react'
 import { useAuthStore } from '@/stores/auth-store'
 import { LIVE_API, authApi } from '@/lib/api'
+import { dAppKit } from '@/lib/sui'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 
 interface SignOutDialogProps {
@@ -13,7 +13,6 @@ export function SignOutDialog({ open, onOpenChange }: SignOutDialogProps) {
   const navigate = useNavigate()
   const location = useLocation()
   const { auth } = useAuthStore()
-  const dAppKit = useDAppKit()
 
   const handleSignOut = async () => {
     if (LIVE_API) await authApi.signOut()

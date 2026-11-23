@@ -5,6 +5,9 @@ import { SignOutDialog } from './sign-out-dialog'
 
 const navigate = vi.fn()
 const reset = vi.fn()
+const disconnectWallet = vi.hoisted(() => vi.fn(() => Promise.resolve()))
+
+vi.mock('@/lib/sui', () => ({ dAppKit: { disconnectWallet } }))
 
 const MOCK_HREF = 'https://app.test/dashboard?tab=1'
 
@@ -35,7 +38,8 @@ describe('SignOutDialog', () => {
 
     await userEvent.click(getByRole('button', { name: /^Sign out$/i }))
 
-    expect(reset).toHaveBeenCalledOnce()
+    await vi.waitFor(() => expect(reset).toHaveBeenCalledOnce())
+    expect(disconnectWallet).toHaveBeenCalledOnce()
     expect(navigate).toHaveBeenCalledWith({
       to: '/sign-in',
       search: { redirect: MOCK_HREF },
@@ -52,5 +56,6 @@ describe('SignOutDialog', () => {
 
     expect(reset).not.toHaveBeenCalled()
     expect(navigate).not.toHaveBeenCalled()
+    expect(disconnectWallet).not.toHaveBeenCalled()
   })
 })
