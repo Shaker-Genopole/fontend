@@ -223,7 +223,9 @@ export function ProofLab() {
         <Card>
           <CardHeader>
             <CardTitle>Protocol execution</CardTitle>
-            <CardDescription>Groth16 · BN254 · sui::groth16</CardDescription>
+            <CardDescription>
+              Groth16 · BLS12-381 · sui::groth16
+            </CardDescription>
           </CardHeader>
           <CardContent className='space-y-4'>
             <ol className='space-y-3'>

@@ -148,8 +148,8 @@ export async function runProofPipeline(
   }
   onStage({
     stage: 'prove',
-    label: 'Generate Groth16 proof (BN254)',
-    detail: 'π = (A ∈ G₁, B ∈ G₂, C ∈ G₁) — 128 bytes compressed',
+    label: 'Generate Groth16 proof (BLS12-381)',
+    detail: 'π = (A ∈ G₁, B ∈ G₂, C ∈ G₁) — 192 bytes compressed (BLS12-381)',
     durationMs: proveMs,
   })
 
@@ -192,7 +192,7 @@ export async function runProofPipeline(
       ok: satisfied ? 1 : 0,
     },
     proof,
-    sizeBytes: 128,
+    sizeBytes: 192,
     proveMs,
     verifyMs,
     gasSui: Number((0.0026 + Math.random() * 0.001).toFixed(4)),

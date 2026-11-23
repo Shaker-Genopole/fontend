@@ -79,7 +79,7 @@ export type ZkProof = {
   contractId: string
   circuit: string
   scheme: 'Groth16'
-  curve: 'BN254'
+  curve: 'BLS12-381'
   /** Aggregated public signals only — no raw sensor or identity data. */
   publicSignals: string[]
   proveMs: number

@@ -2,8 +2,8 @@
  * Simulated, reproducible dataset for the prototype console.
  *
  * Values are synthetic and generated from a fixed seed. Orders of magnitude
- * follow publicly reported figures for Groth16 over BN254 (≈128-byte
- * compressed proofs, millisecond-scale verification) and the SLA targets of
+ * follow the measured figures of Shaker-Genopole/zk-circuits for Groth16 over
+ * BLS12-381 (192-byte compressed proofs, millisecond-scale verification) and the SLA targets of
  * the research proposal (ECG latency ≤ 2 s, availability ≥ 99 %, glucose
  * updates ≤ 5 min). They are placeholders until the edge/Sui back-end is
  * connected and must not be reported as experimental results.
@@ -251,7 +251,7 @@ export const proofs: ZkProof[] = Array.from({ length: 120 }, (_, i) => {
     contractId: contract.id,
     circuit: circuitFor[contract.metric],
     scheme: 'Groth16',
-    curve: 'BN254',
+    curve: 'BLS12-381',
     publicSignals: [
       `threshold=${contract.threshold}`,
       `window=${rng.pick(['5m', '15m', '1h'])}`,
@@ -260,7 +260,7 @@ export const proofs: ZkProof[] = Array.from({ length: 120 }, (_, i) => {
     ],
     proveMs,
     verifyMs: round(Math.max(4, rng.normal(11, 3)), 1),
-    sizeBytes: 128,
+    sizeBytes: 192,
     gasSui: round(rng.normal(0.0031, 0.0004), 4),
     result,
     txDigest: rng.hex(32),
@@ -399,7 +399,7 @@ export const kpis: KpiDefinition[] = [
     kpi: 'Proof size',
     metric: 'bytes',
     method: 'Serialized size stored off-chain',
-    value: '128 B',
+    value: '192 B',
     target: '≤ 256 B',
     met: true,
   },
