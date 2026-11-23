@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import { z } from 'zod'
+import { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from '@tanstack/react-router'
 import { Loader2, UserPlus } from 'lucide-react'
 import { toast } from 'sonner'
-import { IconFacebook, IconGithub } from '@/assets/brand-icons'
+import { useAuthStore } from '@/stores/auth-store'
+import { LIVE_API, authApi } from '@/lib/api'
 import { sleep, cn } from '@/lib/utils'
+import { toAuthUser } from '@/hooks/use-session'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -16,6 +20,7 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { PasswordInput } from '@/components/password-input'
 
 const formSchema = z
@@ -27,8 +32,10 @@ const formSchema = z
     password: z
       .string()
       .min(1, 'Please enter your password.')
-      .min(7, 'Password must be at least 7 characters long.'),
+      .min(8, 'Password must be at least 8 characters long.'),
     confirmPassword: z.string().min(1, 'Please confirm your password.'),
+    role: z.enum(['consumer', 'provider']),
+    organisation: z.string().min(2, 'Please enter your organisation.'),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match.",
@@ -40,6 +47,8 @@ export function SignUpForm({
   ...props
 }: React.HTMLAttributes<HTMLFormElement>) {
   const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
+  const { auth } = useAuthStore()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -47,11 +56,34 @@ export function SignUpForm({
       email: '',
       password: '',
       confirmPassword: '',
+      role: 'consumer',
+      organisation: '',
     },
   })
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true)
+
+    if (LIVE_API) {
+      const { email, password, role, organisation } = data
+      toast.promise(authApi.signUp({ email, password, role, organisation }), {
+        loading: 'Creating account...',
+        success: ({ token, account }) => {
+          setIsLoading(false)
+          auth.setUser(toAuthUser(account))
+          auth.setAccessToken(token)
+          navigate({ to: '/wallet', replace: true })
+          return `Welcome, ${account.organisation}. Connect your Sui wallet next.`
+        },
+        error: (err) => {
+          setIsLoading(false)
+          return err instanceof AxiosError && err.response?.status === 409
+            ? 'This email is already registered.'
+            : 'Could not create the account.'
+        },
+      })
+      return
+    }
 
     toast.promise(sleep(2000), {
       loading: 'Creating account...',
@@ -78,6 +110,43 @@ export function SignUpForm({
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input placeholder='name@example.com' {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='role'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Account type</FormLabel>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className='grid grid-cols-2 gap-2'
+                >
+                  <label className='flex cursor-pointer items-center gap-2 rounded-md border p-2 text-sm'>
+                    <RadioGroupItem value='consumer' /> Hospital
+                  </label>
+                  <label className='flex cursor-pointer items-center gap-2 rounded-md border p-2 text-sm'>
+                    <RadioGroupItem value='provider' /> Provider
+                  </label>
+                </RadioGroup>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='organisation'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Organisation</FormLabel>
+              <FormControl>
+                <Input placeholder='University Hospital' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -113,36 +182,6 @@ export function SignUpForm({
           {isLoading ? <Loader2 className='animate-spin' /> : <UserPlus />}
           Create Account
         </Button>
-
-        <div className='relative my-2'>
-          <div className='absolute inset-0 flex items-center'>
-            <span className='w-full border-t' />
-          </div>
-          <div className='relative flex justify-center text-xs uppercase'>
-            <span className='bg-background px-2 text-muted-foreground'>
-              Or continue with
-            </span>
-          </div>
-        </div>
-
-        <div className='grid grid-cols-2 gap-2'>
-          <Button
-            variant='outline'
-            className='w-full'
-            type='button'
-            disabled={isLoading}
-          >
-            <IconGithub className='h-4 w-4' /> GitHub
-          </Button>
-          <Button
-            variant='outline'
-            className='w-full'
-            type='button'
-            disabled={isLoading}
-          >
-            <IconFacebook className='h-4 w-4' /> Facebook
-          </Button>
-        </div>
       </form>
     </Form>
   )

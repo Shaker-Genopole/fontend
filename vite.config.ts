@@ -21,6 +21,12 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    // Same-origin API in development, mirroring the nginx proxy of the image.
+    proxy: {
+      '/api': process.env.API_UPSTREAM ?? 'http://localhost:8080',
+    },
+  },
   test: {
     silent: 'passed-only',
     unstubEnvs: true,

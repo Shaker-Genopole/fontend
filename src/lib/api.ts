@@ -19,11 +19,39 @@ api.interceptors.request.use((config) => {
   return config
 })
 
+export type Role = 'consumer' | 'provider' | 'admin'
+
 export type ApiAccount = {
   _id: string
   email: string
-  role: 'consumer' | 'provider' | 'admin'
+  role: Role
   organisation: string
+  suiAddress?: string
+}
+
+export type SlaTerms = {
+  maxLatencyMs: number
+  latencyQuorumBp: number
+  minAvailabilityBp: number
+  maxIntervalSec: number
+  periodMs: number
+  totalPeriods: number
+  graceMs: number
+  rewardPerPeriod: number
+  penaltyPerPeriod: number
+}
+
+export type ApiAgreement = {
+  _id: string
+  onChainId?: string
+  title: string
+  consumerId: string
+  providerId: string
+  terms: SlaTerms
+  status: 'proposed' | 'active' | 'closed' | 'cancelled'
+  startMs?: number
+  deploymentCommitment?: string
+  createdAt: string
 }
 
 export type ApiKpis = {
@@ -61,10 +89,95 @@ export type ApiProof = {
   completedAt: number
 }
 
-export async function login(email: string, password: string) {
-  const { data } = await api.post<{ token: string; account: ApiAccount }>(
-    '/api/auth/login',
-    { email, password }
-  )
-  return data
+type Session = { token: string; account: ApiAccount }
+
+// ---- auth ---------------------------------------------------------------------------
+export const authApi = {
+  signUp: async (body: {
+    email: string
+    password: string
+    role: 'consumer' | 'provider'
+    organisation: string
+  }) => (await api.post<Session>('/api/auth/signup', body)).data,
+  signIn: async (email: string, password: string) =>
+    (await api.post<Session>('/api/auth/login', { email, password })).data,
+  signOut: async () => {
+    await api.post('/api/auth/logout').catch(() => undefined)
+  },
+  me: async () => (await api.get<ApiAccount>('/api/auth/me')).data,
+  updateProfile: async (organisation: string) =>
+    (await api.patch<ApiAccount>('/api/auth/me', { organisation })).data,
+  providers: async () =>
+    (
+      await api.get<
+        Array<Pick<ApiAccount, '_id' | 'organisation' | 'suiAddress'>>
+      >('/api/auth/providers')
+    ).data,
+  walletChallenge: async () =>
+    (
+      await api.post<{ message: string; expiresAt: string }>(
+        '/api/auth/wallet/challenge'
+      )
+    ).data,
+  linkWallet: async (address: string, signature: string) =>
+    (await api.post<ApiAccount>('/api/auth/wallet', { address, signature }))
+      .data,
+  unlinkWallet: async () => {
+    await api.delete('/api/auth/wallet')
+  },
+}
+
+/** Kept for the sign-in form. */
+export const login = authApi.signIn
+
+// ---- agreements ---------------------------------------------------------------------------
+export const agreementsApi = {
+  list: async () => (await api.get<ApiAgreement[]>('/api/agreements')).data,
+  create: async (body: {
+    title: string
+    providerId: string
+    terms: SlaTerms
+    onChainId?: string
+  }) => (await api.post<ApiAgreement>('/api/agreements', body)).data,
+  registerDeployment: async (
+    id: string,
+    body: {
+      locations: string[]
+      sensorConfig: Record<string, unknown>
+      devices: Array<{
+        deviceId: string
+        kind: string
+        expectedIntervalSec: number
+        edgeNodeId: string
+      }>
+    }
+  ) =>
+    (
+      await api.post<{ deploymentCommitment: string }>(
+        `/api/agreements/${id}/deployment`,
+        body
+      )
+    ).data,
+  activate: async (
+    id: string,
+    body: { onChainId?: string; startMs?: number }
+  ) =>
+    (await api.post<ApiAgreement>(`/api/agreements/${id}/activate`, body)).data,
+  get: async (id: string) =>
+    (
+      await api.get<
+        ApiAgreement & {
+          deviceCount: number
+          periods: Array<{
+            period: number
+            status: string
+            jobId?: string
+            metricsCommitment?: string
+            txDigest?: string
+          }>
+        }
+      >(`/api/agreements/${id}`)
+    ).data,
+  proof: async (id: string) =>
+    (await api.get<ApiProof & { proofHex?: string }>(`/api/proofs/${id}`)).data,
 }

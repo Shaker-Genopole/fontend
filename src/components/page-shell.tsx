@@ -1,4 +1,6 @@
-import { FlaskConical } from 'lucide-react'
+import { FlaskConical, Radio } from 'lucide-react'
+import { LIVE_API } from '@/lib/api'
+import { SUI_NETWORK } from '@/lib/sui'
 import { Badge } from '@/components/ui/badge'
 import { ConfigDrawer } from '@/components/config-drawer'
 import { Header } from '@/components/layout/header'
@@ -26,8 +28,14 @@ export function PageShell({
       <Header fixed>
         <Search className='me-auto' />
         <Badge variant='outline' className='hidden gap-1 sm:inline-flex'>
-          <FlaskConical className='size-3' />
-          Simulated data · Sui Testnet profile
+          {LIVE_API ? (
+            <Radio className='size-3' />
+          ) : (
+            <FlaskConical className='size-3' />
+          )}
+          {LIVE_API
+            ? `Live data, Sui ${SUI_NETWORK}`
+            : `Synthetic data, Sui ${SUI_NETWORK} profile`}
         </Badge>
         <ThemeSwitch />
         <ConfigDrawer />
