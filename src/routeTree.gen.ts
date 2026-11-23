@@ -26,6 +26,7 @@ import { Route as ClerkAuthenticatedRouteRouteImport } from './routes/clerk/_aut
 import { Route as ClerkauthRouteRouteImport } from './routes/clerk/(auth)/route'
 import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
 import { Route as AuthenticatedZkProofsIndexRouteImport } from './routes/_authenticated/zk-proofs/index'
+import { Route as AuthenticatedWalletIndexRouteImport } from './routes/_authenticated/wallet/index'
 import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index'
 import { Route as AuthenticatedTasksIndexRouteImport } from './routes/_authenticated/tasks/index'
 import { Route as AuthenticatedSlaContractsIndexRouteImport } from './routes/_authenticated/sla-contracts/index'
@@ -128,6 +129,12 @@ const AuthenticatedZkProofsIndexRoute =
   AuthenticatedZkProofsIndexRouteImport.update({
     id: '/zk-proofs/',
     path: '/zk-proofs/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedWalletIndexRoute =
+  AuthenticatedWalletIndexRouteImport.update({
+    id: '/wallet/',
+    path: '/wallet/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
@@ -272,6 +279,7 @@ export interface FileRoutesByFullPath {
   '/sla-contracts/': typeof AuthenticatedSlaContractsIndexRoute
   '/tasks/': typeof AuthenticatedTasksIndexRoute
   '/users/': typeof AuthenticatedUsersIndexRoute
+  '/wallet/': typeof AuthenticatedWalletIndexRoute
   '/zk-proofs/': typeof AuthenticatedZkProofsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -306,6 +314,7 @@ export interface FileRoutesByTo {
   '/sla-contracts': typeof AuthenticatedSlaContractsIndexRoute
   '/tasks': typeof AuthenticatedTasksIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/wallet': typeof AuthenticatedWalletIndexRoute
   '/zk-proofs': typeof AuthenticatedZkProofsIndexRoute
 }
 export interface FileRoutesById {
@@ -345,6 +354,7 @@ export interface FileRoutesById {
   '/_authenticated/sla-contracts/': typeof AuthenticatedSlaContractsIndexRoute
   '/_authenticated/tasks/': typeof AuthenticatedTasksIndexRoute
   '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_authenticated/wallet/': typeof AuthenticatedWalletIndexRoute
   '/_authenticated/zk-proofs/': typeof AuthenticatedZkProofsIndexRoute
 }
 export interface FileRouteTypes {
@@ -382,6 +392,7 @@ export interface FileRouteTypes {
     | '/sla-contracts/'
     | '/tasks/'
     | '/users/'
+    | '/wallet/'
     | '/zk-proofs/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -416,6 +427,7 @@ export interface FileRouteTypes {
     | '/sla-contracts'
     | '/tasks'
     | '/users'
+    | '/wallet'
     | '/zk-proofs'
   id:
     | '__root__'
@@ -454,6 +466,7 @@ export interface FileRouteTypes {
     | '/_authenticated/sla-contracts/'
     | '/_authenticated/tasks/'
     | '/_authenticated/users/'
+    | '/_authenticated/wallet/'
     | '/_authenticated/zk-proofs/'
   fileRoutesById: FileRoutesById
 }
@@ -591,6 +604,13 @@ declare module '@tanstack/react-router' {
       path: '/zk-proofs'
       fullPath: '/zk-proofs/'
       preLoaderRoute: typeof AuthenticatedZkProofsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/wallet/': {
+      id: '/_authenticated/wallet/'
+      path: '/wallet'
+      fullPath: '/wallet/'
+      preLoaderRoute: typeof AuthenticatedWalletIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/users/': {
@@ -766,6 +786,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedSlaContractsIndexRoute: typeof AuthenticatedSlaContractsIndexRoute
   AuthenticatedTasksIndexRoute: typeof AuthenticatedTasksIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
+  AuthenticatedWalletIndexRoute: typeof AuthenticatedWalletIndexRoute
   AuthenticatedZkProofsIndexRoute: typeof AuthenticatedZkProofsIndexRoute
 }
 
@@ -783,6 +804,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSlaContractsIndexRoute: AuthenticatedSlaContractsIndexRoute,
   AuthenticatedTasksIndexRoute: AuthenticatedTasksIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+  AuthenticatedWalletIndexRoute: AuthenticatedWalletIndexRoute,
   AuthenticatedZkProofsIndexRoute: AuthenticatedZkProofsIndexRoute,
 }
 

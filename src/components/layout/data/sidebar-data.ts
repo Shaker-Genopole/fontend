@@ -26,6 +26,7 @@ import {
   Handshake,
   HeartPulse,
   Network,
+  Wallet,
 } from 'lucide-react'
 import { ClerkLogo } from '@/assets/clerk-logo'
 import { type SidebarData } from '../types'
@@ -40,7 +41,7 @@ export const sidebarData: SidebarData = {
     {
       name: 'ZK-SLA Console',
       logo: ShieldHalf,
-      plan: 'Sui Testnet · Groth16',
+      plan: 'Sui testnet, Groth16',
     },
     {
       name: 'Hospital Pilot',
@@ -66,6 +67,11 @@ export const sidebarData: SidebarData = {
           title: 'SLA Contracts',
           url: '/sla-contracts',
           icon: FileCheck2,
+        },
+        {
+          title: 'Wallet',
+          url: '/wallet',
+          icon: Wallet,
         },
         {
           title: 'ZK Proof Ledger',
