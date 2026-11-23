@@ -35,30 +35,34 @@ _Figure 1. Platform architecture ([PDF](docs/architecture.pdf), source [docs/arc
 ### Verification scenarios
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, Helvetica, sans-serif","fontSize":"22px","lineColor":"#4d4d4d"},"flowchart":{"padding":18,"nodeSpacing":50,"rankSpacing":60,"curve":"basis","htmlLabels":true}}}%%
 flowchart TB
-  subgraph S1["<b>Scenario 1 (SLA compliance)</b>"]
+  subgraph S1["<b>SLA compliance</b>&nbsp;&nbsp;&nbsp;"]
     direction LR
-    t1(["<b>Hidden deployment telemetry</b><br/>devices, locations, readings"])
-    p1{{"<b>Groth16 proof</b><br/>ECG ≤ 2 s for 95 %, availability ≥ 99 %,<br/>glucose gap ≤ 5 min"}}
-    v1(["<b>Sui verifies</b><br/>reward or penalty"])
+    t1(["&nbsp;<b>Hidden telemetry</b>&nbsp;"])
+    p1{{"&nbsp;<b>Groth16 proof</b>&nbsp;"}}
+    v1(["&nbsp;<b>Reward or penalty</b>&nbsp;"])
     t1 --> p1 --> v1
   end
-  subgraph S2["<b>Scenario 2 (resource negotiation)</b>"]
+  subgraph S2["<b>Negotiation</b>&nbsp;&nbsp;&nbsp;"]
     direction LR
-    t2(["<b>Hidden provider capabilities</b><br/>storage, latency, cost, CPU"])
-    p2{{"<b>Groth16 proof</b><br/>offer satisfies the<br/>consumer's constraints"}}
-    v2(["<b>Sui verifies</b><br/>offer qualifies, consumer selects"])
+    t2(["&nbsp;<b>Hidden offer</b>&nbsp;"])
+    p2{{"&nbsp;<b>Groth16 proof</b>&nbsp;"}}
+    v2(["&nbsp;<b>Offer qualifies</b>&nbsp;"])
     t2 --> p2 --> v2
   end
 
-  classDef secret fill:#f8cecc,stroke:#b85450,color:#3d0d0b,stroke-width:1.5px
-  classDef proof fill:#d5e8d4,stroke:#82b366,color:#14300f,stroke-width:1.5px
-  classDef chain fill:#dae8fc,stroke:#6c8ebf,color:#132a4a,stroke-width:1.5px
+  S1 ~~~ S2
+
+  classDef secret fill:#f8cecc,stroke:#b85450,color:#3d0d0b,stroke-width:2px
+  classDef proof fill:#d5e8d4,stroke:#82b366,color:#14300f,stroke-width:2px
+  classDef chain fill:#dae8fc,stroke:#6c8ebf,color:#132a4a,stroke-width:2px
   class t1,t2 secret
   class p1,p2 proof
   class v1,v2 chain
-  style S1 fill:#fffaf0,stroke:#d6b656,stroke-width:1.5px,stroke-dasharray:6 4
-  style S2 fill:#faf5ff,stroke:#9673a6,stroke-width:1.5px,stroke-dasharray:6 4
+  style S1 fill:#fffaf0,stroke:#d6b656,stroke-width:2px,stroke-dasharray:6 4
+  style S2 fill:#faf5ff,stroke:#9673a6,stroke-width:2px,stroke-dasharray:6 4
+  linkStyle 0,1,2,3 stroke:#4d4d4d,stroke-width:2.5px
 ```
 
 ## Modules
