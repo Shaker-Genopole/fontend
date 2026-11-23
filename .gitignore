@@ -32,3 +32,6 @@ dist-ssr
 # Vitest artifacts (browser screenshots/attachments)
 **/__screenshots__/
 .vitest-attachments/
+
+# e2e smoke screenshots
+e2e/screenshots/
