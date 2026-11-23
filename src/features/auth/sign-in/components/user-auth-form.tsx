@@ -7,6 +7,7 @@ import { Loader2, LogIn } from 'lucide-react'
 import { toast } from 'sonner'
 import { IconFacebook, IconGithub } from '@/assets/brand-icons'
 import { useAuthStore } from '@/stores/auth-store'
+import { LIVE_API, login } from '@/lib/api'
 import { sleep, cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
@@ -53,6 +54,29 @@ export function UserAuthForm({
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true)
+
+    if (LIVE_API) {
+      toast.promise(login(data.email, data.password), {
+        loading: 'Signing in...',
+        success: ({ token, account }) => {
+          setIsLoading(false)
+          auth.setUser({
+            accountNo: account._id,
+            email: account.email,
+            role: [account.role],
+            exp: Date.now() + 12 * 60 * 60 * 1000,
+          })
+          auth.setAccessToken(token)
+          navigate({ to: redirectTo || '/', replace: true })
+          return `Welcome back, ${account.organisation}!`
+        },
+        error: () => {
+          setIsLoading(false)
+          return 'Invalid email or password'
+        },
+      })
+      return
+    }
 
     toast.promise(sleep(2000), {
       loading: 'Signing in...',

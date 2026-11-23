@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { kpis, proofs, summary } from '@/data/dataset'
+import { kpis } from '@/data/dataset'
 import {
   Activity,
   CheckCircle2,
@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   XCircle,
 } from 'lucide-react'
+import { useProofLedger, useSummary } from '@/lib/live-data'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -34,11 +35,16 @@ import { Analytics } from './components/analytics'
 import { ComplianceChart, LatencyChart } from './components/sla-charts'
 
 export function Dashboard() {
+  const { summary, source } = useSummary()
+  const { proofs } = useProofLedger()
   const stats = [
     {
       title: 'SLA compliance rate',
       value: `${summary.complianceRate} %`,
-      note: 'verified / decided proofs, 14 days',
+      note:
+        source === 'live'
+          ? 'live: proven / settled SLA periods'
+          : 'verified / decided proofs, 14 days',
       icon: ShieldCheck,
     },
     {

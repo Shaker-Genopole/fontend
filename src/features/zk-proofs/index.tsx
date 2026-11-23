@@ -1,8 +1,8 @@
 import { format } from 'date-fns'
 import { type ColumnDef } from '@tanstack/react-table'
-import { proofs, summary } from '@/data/dataset'
 import { shortHash } from '@/data/random'
 import { type ZkProof } from '@/data/types'
+import { useProofLedger, useSummary } from '@/lib/live-data'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { DataTableColumnHeader } from '@/components/data-table'
@@ -112,13 +112,15 @@ const columns: ColumnDef<ZkProof>[] = [
 ]
 
 export function ZkProofs() {
+  const { summary } = useSummary()
+  const { proofs } = useProofLedger()
   const stats = [
     { title: 'Median proving time', value: `${summary.medianProveMs} ms` },
     {
       title: 'Median verification time',
       value: `${summary.medianVerifyMs} ms`,
     },
-    { title: 'Proof size (compressed)', value: '128 B' },
+    { title: 'Proof size (compressed)', value: '192 B' },
     { title: 'Mean gas per verification', value: `${summary.meanGasSui} SUI` },
   ]
   const circuits = Array.from(new Set(proofs.map((p) => p.circuit)))
