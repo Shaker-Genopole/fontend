@@ -74,7 +74,10 @@ describe('SignUpForm', () => {
   it('disables submit while submitting and re-enables after timeout', async () => {
     vi.useFakeTimers()
 
-    await userEvent.fill(screen.getByLabelText(/^Organisation$/i), 'Demo Hospital')
+    await userEvent.fill(
+      screen.getByLabelText(/^Organisation$/i),
+      'Demo Hospital'
+    )
     await userEvent.fill(emailInput, 'a@b.com')
     await userEvent.fill(passwordInput, '12345678')
     await userEvent.fill(confirmPasswordInput, '12345678')
