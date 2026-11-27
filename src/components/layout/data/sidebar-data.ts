@@ -29,6 +29,7 @@ import {
   Wallet,
 } from 'lucide-react'
 import { ClerkLogo } from '@/assets/clerk-logo'
+import { Logo } from '@/assets/logo'
 import { type SidebarData } from '../types'
 
 export const sidebarData: SidebarData = {
@@ -40,7 +41,7 @@ export const sidebarData: SidebarData = {
   teams: [
     {
       name: 'ZK-SLA Console',
-      logo: ShieldHalf,
+      logo: Logo,
       plan: 'Sui testnet, Groth16',
     },
     {
