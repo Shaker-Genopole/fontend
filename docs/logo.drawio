@@ -89,7 +89,7 @@
             <mxPoint x="388" y="146" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="l-tagline" value="Verifiable SLAs for healthcare IoT · Shaker Genopole Program 2026" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=26;fontColor=#4C6780;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="l-tagline" value="Verifiable SLAs for healthcare IoT in the Shaker Genopole Program 2026" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=26;fontColor=#4C6780;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="264" y="156" width="760" height="44" as="geometry" />
         </mxCell>
       </root>
