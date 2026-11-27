@@ -1,0 +1,98 @@
+<mxfile host="drawio" agent="Smart Intelligent System logo" version="24.0.0">
+  <diagram id="mark" name="mark">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="4" guides="1" tooltips="1" connect="0" arrows="0" fold="1" page="0" pageScale="1" pageWidth="256" pageHeight="256" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hex" value="" style="shape=hexagon;perimeter=hexagonPerimeter2;direction=north;size=0.25;fixedSize=0;fillColor=#1687C9;gradientColor=#17324B;gradientDirection=south;strokeColor=#FFFFFF;strokeWidth=6;" vertex="1" parent="1">
+          <mxGeometry x="28" y="12" width="200" height="232" as="geometry" />
+        </mxCell>
+        <mxCell id="hex-inner" value="" style="shape=hexagon;perimeter=hexagonPerimeter2;direction=north;size=0.25;fixedSize=0;fillColor=none;strokeColor=#FFFFFF;strokeWidth=5;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="48" y="36" width="160" height="184" as="geometry" />
+        </mxCell>
+        <mxCell id="pulse" value="" style="endArrow=none;startArrow=none;html=1;strokeColor=#FFFFFF;strokeWidth=14;rounded=0;curved=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="48" y="136" as="sourcePoint" />
+            <mxPoint x="208" y="136" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="84" y="136" />
+              <mxPoint x="102" y="100" />
+              <mxPoint x="124" y="176" />
+              <mxPoint x="146" y="76" />
+              <mxPoint x="164" y="136" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="node-a" value="" style="ellipse;aspect=fixed;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="91" y="89" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="node-b" value="" style="ellipse;aspect=fixed;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="113" y="165" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="node-key" value="" style="ellipse;aspect=fixed;fillColor=#63003C;strokeColor=#FFFFFF;strokeWidth=9;" vertex="1" parent="1">
+          <mxGeometry x="128" y="58" width="36" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="cap-l" value="" style="ellipse;aspect=fixed;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="41" y="129" width="14" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="cap-r" value="" style="ellipse;aspect=fixed;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="201" y="129" width="14" height="14" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="lockup" name="lockup">
+    <mxGraphModel dx="1200" dy="600" grid="1" gridSize="4" guides="1" tooltips="1" connect="0" arrows="0" fold="1" page="0" pageScale="1" pageWidth="1000" pageHeight="256" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="l-hex" value="" style="shape=hexagon;perimeter=hexagonPerimeter2;direction=north;size=0.25;fixedSize=0;fillColor=#1687C9;gradientColor=#17324B;gradientDirection=south;strokeColor=#FFFFFF;strokeWidth=6;" vertex="1" parent="1">
+          <mxGeometry x="28" y="12" width="200" height="232" as="geometry" />
+        </mxCell>
+        <mxCell id="l-hex-inner" value="" style="shape=hexagon;perimeter=hexagonPerimeter2;direction=north;size=0.25;fixedSize=0;fillColor=none;strokeColor=#FFFFFF;strokeWidth=5;opacity=30;" vertex="1" parent="1">
+          <mxGeometry x="48" y="36" width="160" height="184" as="geometry" />
+        </mxCell>
+        <mxCell id="l-pulse" value="" style="endArrow=none;startArrow=none;html=1;strokeColor=#FFFFFF;strokeWidth=14;rounded=0;curved=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="48" y="136" as="sourcePoint" />
+            <mxPoint x="208" y="136" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="84" y="136" />
+              <mxPoint x="102" y="100" />
+              <mxPoint x="124" y="176" />
+              <mxPoint x="146" y="76" />
+              <mxPoint x="164" y="136" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l-node-a" value="" style="ellipse;aspect=fixed;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="91" y="89" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="l-node-b" value="" style="ellipse;aspect=fixed;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="113" y="165" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="l-node-key" value="" style="ellipse;aspect=fixed;fillColor=#63003C;strokeColor=#FFFFFF;strokeWidth=9;" vertex="1" parent="1">
+          <mxGeometry x="128" y="58" width="36" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="l-cap-l" value="" style="ellipse;aspect=fixed;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="41" y="129" width="14" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="l-cap-r" value="" style="ellipse;aspect=fixed;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="201" y="129" width="14" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="l-name" value="Smart Intelligent System" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=64;fontStyle=1;fontColor=#17324B;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="264" y="56" width="760" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="l-rule" value="" style="endArrow=none;html=1;strokeColor=#63003C;strokeWidth=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="268" y="146" as="sourcePoint" />
+            <mxPoint x="388" y="146" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l-tagline" value="Verifiable SLAs for healthcare IoT · Shaker Genopole Program 2026" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=26;fontColor=#4C6780;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="264" y="156" width="760" height="44" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
